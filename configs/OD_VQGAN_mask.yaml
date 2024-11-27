@@ -1,0 +1,36 @@
+model:
+    pretrained_weight: ckpt/maskgit-vqgan-imagenet-f16-256.bin
+    lossconfig:
+      target: modeling.vqperceptual.VQLPIPSWithDiscriminator
+      params:
+        disc_start: 0
+        codebook_weight: 1.0
+        pixelloss_weight: 1.0
+        disc_factor: 1.0
+        disc_weight: 1.0
+        perceptual_weight: 1.0
+        disc_conditional: false
+        disc_loss: hinge
+        disc_weight_max: 0.75
+
+    # optimizer:
+    #     learning_rate: 1e-5           # 初始学习率
+    #     min_learning_rate: 1e-6       # 最小学习率
+    #     scheduler_type: "linear-warmup_cosine-decay"
+    #     warmup_epochs: 0.1            # 预热的epoch比例
+    #     max_steps: 200000              # 总的训练步数
+    optimizer:
+        learning_rate: 1.0e-05
+        scheduler_type: "linear-warmup" 
+        warmup_epochs: 0.1
+        
+transformer:
+    width: 256
+    num_layers: 32
+    num_heads: 4
+    
+
+
+
+    
+    
